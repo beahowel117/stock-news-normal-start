@@ -2,7 +2,7 @@ import requests
 from twilio.rest import Client
 
 TWILIO_SID = 'AC3a32b779a0b2a35e464c8b2acdb6c675'
-TWILIO_AUTH_TOKEN = '2edf7740e8590a7e860ef71e3c7099a8'
+TWILIO_AUTH_TOKEN = 'a4dca0628b7666c33d647abbbe7d0e5a'
 STOCK_NAME = "TSLA"
 COMPANY_NAME = "Tesla Inc"
 
@@ -45,7 +45,7 @@ else:
 diff_percent = round((price_diff /float(yesterday_closing_price)) * 100)
 print(diff_percent)
 
-if abs(diff_percent) > 5:
+if abs(diff_percent) > 1:
     news_params = {
         "qInTitle": COMPANY_NAME,
         "apiKey": NEWS_API_KEY
@@ -54,8 +54,9 @@ if abs(diff_percent) > 5:
     news_articles = news_response.json()["articles"]
     three_articles = news_articles[:3]
 
-    formatted_articles = [f"{STOCK_NAME}: {up_down}{diff_percent}% \nHeadline: {article['title']}. \nBrief: {article['description']}" for article in three_articles]
 
+    formatted_articles = [f"{STOCK_NAME}: {up_down}{diff_percent}% \nHeadline: {article['title']}.\nBrief: {article['description']}" for article in three_articles]
+    print(formatted_articles)
     client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
 
     for article in formatted_articles:
