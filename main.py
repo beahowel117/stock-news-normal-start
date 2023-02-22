@@ -1,6 +1,8 @@
 import requests
 from twilio.rest import Client
 
+
+load_dotenv()
 TWILIO_SID = 'AC3a32b779a0b2a35e464c8b2acdb6c675'
 TWILIO_AUTH_TOKEN = 'a4dca0628b7666c33d647abbbe7d0e5a'
 STOCK_NAME = "TSLA"
