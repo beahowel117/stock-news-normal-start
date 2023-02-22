@@ -1,18 +1,18 @@
 import requests
 from twilio.rest import Client
+import os
 
 
-load_dotenv()
-TWILIO_SID = 'AC3a32b779a0b2a35e464c8b2acdb6c675'
-TWILIO_AUTH_TOKEN = 'a4dca0628b7666c33d647abbbe7d0e5a'
+TWILIO_SID = os.getenv(TWILIO_SID)
+TWILIO_AUTH_TOKEN = os.getenv(TWILIO_AUTH_TOKEN)
 STOCK_NAME = "TSLA"
 COMPANY_NAME = "Tesla Inc"
 
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
 NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
 
-STOCK_API_KEY = 'C6SO2ZKTG5OF8ZCS'
-NEWS_API_KEY = '0ebf0a9691444d2e8a83692206acad45'
+STOCK_API_KEY = os.getenv(STOCK_API_KEY)
+NEWS_API_KEY = os.getenv(NEWS_API_KEY)
 
 stock_params = {
     "function": "TIME_SERIES_DAILY_ADJUSTED",
